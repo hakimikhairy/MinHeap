@@ -73,7 +73,15 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
-        pass
+        if self._heap.is_empty():
+            raise MinHeapException
+
+        temp_value = self._heap[0]
+        self._heap[0] = self._heap[self._heap.length() - 1]
+        _percolate_down(self._heap, 0)
+
+        return temp_value
+
 
     def build_heap(self, da: DynamicArray) -> None:
         """
@@ -109,7 +117,22 @@ def _percolate_down(da: DynamicArray, parent: int) -> None:
     """
     TODO: Write your implementation
     """
-    pass
+    child_1_index = 2 * parent + 1
+    child_2_index = 2 * parent + 2
+    while child_1_index < da.length() and da[child_1_index] > da[parent]:
+        if child_2_index < da.length() and da[child_2_index] > da[child_1_index]:
+            temp = da[parent]
+            da[parent] = da[child_2_index]
+            da[child_2_index] = temp
+            parent = child_2_index
+        else:
+            temp = da[parent]
+            da[parent] = da[child_1_index]
+            da[child_1_index] = temp
+            parent = child_1_index
+        child_1_index = 2 * parent + 1
+        child_2_index = 2 * parent + 2
+
 
 
 # ------------------- BASIC TESTING -----------------------------------------
