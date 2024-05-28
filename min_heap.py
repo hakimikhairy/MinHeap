@@ -78,6 +78,7 @@ class MinHeap:
 
         temp_value = self._heap[0]
         self._heap[0] = self._heap[self._heap.length() - 1]
+        self._heap.remove_at_index(self._heap.length() - 1)
         _percolate_down(self._heap, 0)
 
         return temp_value
