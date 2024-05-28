@@ -64,7 +64,10 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
-        pass
+        if self._heap.is_empty():
+            raise MinHeapException
+        else:
+            return self._heap[0]
 
     def remove_min(self) -> object:
         """
