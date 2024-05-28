@@ -58,7 +58,7 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
-        pass
+        return self._heap.is_empty()
 
     def get_min(self) -> object:
         """
