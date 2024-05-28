@@ -85,13 +85,13 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
-        pass
+        return self._heap.length()
 
     def clear(self) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+        self._heap = DynamicArray()
 
 
 def heapsort(da: DynamicArray) -> None:
