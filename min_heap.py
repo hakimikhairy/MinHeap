@@ -120,12 +120,19 @@ def _percolate_down(da: DynamicArray, parent: int) -> None:
     """
     child_1_index = 2 * parent + 1
     child_2_index = 2 * parent + 2
-    while (child_1_index < da.length() and da[child_1_index] > da[parent]) or (child_2_index < da.length() and da[child_2_index] > da[parent]):
-        if child_2_index < da.length() and da[child_2_index] > da[child_1_index]:
-            temp = da[parent]
-            da[parent] = da[child_2_index]
-            da[child_2_index] = temp
-            parent = child_2_index
+
+    while (child_1_index < da.length() and da[parent] > da[child_1_index]) or (child_2_index < da.length() and da[parent] > da[child_2_index]):
+        if child_2_index < da.length():
+            if da[child_1_index] <= da[child_2_index] and da[parent] > da[child_1_index]:
+                temp = da[parent]
+                da[parent] = da[child_1_index]
+                da[child_1_index] = temp
+                parent = child_1_index
+            else:
+                temp = da[parent]
+                da[parent] = da[child_2_index]
+                da[child_2_index] = temp
+                parent = child_2_index
         else:
             temp = da[parent]
             da[parent] = da[child_1_index]
@@ -133,7 +140,6 @@ def _percolate_down(da: DynamicArray, parent: int) -> None:
             parent = child_1_index
         child_1_index = 2 * parent + 1
         child_2_index = 2 * parent + 2
-
 
 
 # ------------------- BASIC TESTING -----------------------------------------
