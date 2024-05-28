@@ -83,12 +83,17 @@ class MinHeap:
 
         return temp_value
 
-
     def build_heap(self, da: DynamicArray) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+        self._heap = DynamicArray()
+        for i in range(da.length()):
+            self._heap.append(da[i])
+
+        for i in range((self._heap.length() - 1) // 2 - 1, -1, -1):
+            _percolate_down(self._heap, i)
+
 
     def size(self) -> int:
         """
