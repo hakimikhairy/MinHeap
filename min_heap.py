@@ -91,7 +91,7 @@ class MinHeap:
         for i in range(da.length()):
             self._heap.append(da[i])
 
-        for i in range((self._heap.length() - 1) // 2 - 1, -1, -1):
+        for i in range((self._heap.length()) // 2 - 1, -1, -1):
             _percolate_down(self._heap, i)
 
 
