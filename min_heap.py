@@ -3,7 +3,8 @@
 # Course: CS261 - Data Structures
 # Assignment: 5
 # Due Date: 05/28/24
-# Description:
+# Description: This file contains a MinHeap implementation using a DynamicArray data structure. Various methods are
+# included to implement the MinHeap. A heapsort algorithm function is included to sort a DynamicArray data structure.
 
 
 from dynamic_array import *
@@ -41,7 +42,12 @@ class MinHeap:
 
     def add(self, node: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a node to the MinHeap and places it in the correct position based on MinHeap structure
+        requirements.
+
+        Input: object
+
+        Output: None
         """
         self._heap.append(node)
 
@@ -53,16 +59,24 @@ class MinHeap:
             self._heap[(current_index - 1) // 2] = temp
             current_index = (current_index - 1) // 2
 
-
     def is_empty(self) -> bool:
         """
-        TODO: Write this implementation
+        This method checks whether a MinHeap is empty or not, returns True if empty, else returns False.
+
+        Input: None
+
+        Output: Boolean
         """
         return self._heap.is_empty()
 
     def get_min(self) -> object:
         """
-        TODO: Write this implementation
+        This method returns the object with the minimum priority value in the MinHeap. Raises MinHeapException if
+        MinHeap is empty.
+
+        Input: None
+
+        Output: object
         """
         if self._heap.is_empty():
             raise MinHeapException
@@ -71,7 +85,12 @@ class MinHeap:
 
     def remove_min(self) -> object:
         """
-        TODO: Write this implementation
+        This method removes the object with the minimum priority value from the MinHeap and returns the object.
+        MinHeap adjusts accordingly to MinHeap structure requirements. Raises MinHeapException if MinHeap is empty.
+
+        Input: None
+
+        Output: object
         """
         if self._heap.is_empty():
             raise MinHeapException
@@ -85,7 +104,11 @@ class MinHeap:
 
     def build_heap(self, da: DynamicArray) -> None:
         """
-        TODO: Write this implementation
+        This method creates a MinHeap from an input DynamicArray.
+
+        Input: DynamicArray
+
+        Output: None
         """
         self._heap = DynamicArray()
         for i in range(da.length()):
@@ -96,20 +119,32 @@ class MinHeap:
 
     def size(self) -> int:
         """
-        TODO: Write this implementation
+        This method returns the number of items stored in the MinHeap.
+
+        Input: None
+
+        Output: int
         """
         return self._heap.length()
 
     def clear(self) -> None:
         """
-        TODO: Write this implementation
+        This method empties the MinHeap.
+
+        Input: None
+
+        Output: None
         """
         self._heap = DynamicArray()
 
 
 def heapsort(da: DynamicArray) -> None:
     """
-    TODO: Write this implementation
+    This function implements the heapsort algorithm to sort a DynamicArray data structure in non-ascending order.
+
+    Input: DynamicArray
+
+    Output: None
     """
     for i in range((da.length()) // 2 - 1, -1, -1):
         _percolate_down(da, i, da.length())
@@ -126,14 +161,19 @@ def heapsort(da: DynamicArray) -> None:
 # this from inside the MinHeap class. You may edit the function definition.  #
 
 
-def _percolate_down(da: DynamicArray, parent: int, stop) -> None:
+def _percolate_down(da: DynamicArray, parent: int, stop: int) -> None:
     """
-    TODO: Write your implementation
+    This helper function moves a node down a MinHeap tree based on MinHeap structure requirements.
+
+    Input: DynamicArray, parent index int, stop index int
+
+    Output: None
     """
     child_1_index = 2 * parent + 1
     child_2_index = 2 * parent + 2
 
-    while (child_1_index < stop and da[parent] > da[child_1_index]) or (child_2_index < stop and da[parent] > da[child_2_index]):
+    while ((child_1_index < stop and da[parent] > da[child_1_index]) or
+           (child_2_index < stop and da[parent] > da[child_2_index])):
         if child_2_index < stop:
             if da[child_1_index] <= da[child_2_index] and da[parent] > da[child_1_index]:
                 temp = da[parent]
