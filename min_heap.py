@@ -79,7 +79,7 @@ class MinHeap:
         temp_value = self._heap[0]
         self._heap[0] = self._heap[self._heap.length() - 1]
         self._heap.remove_at_index(self._heap.length() - 1)
-        _percolate_down(self._heap, 0)
+        _percolate_down(self._heap, 0, self._heap.length())
 
         return temp_value
 
@@ -92,8 +92,7 @@ class MinHeap:
             self._heap.append(da[i])
 
         for i in range((self._heap.length()) // 2 - 1, -1, -1):
-            _percolate_down(self._heap, i)
-
+            _percolate_down(self._heap, i, self._heap.length())
 
     def size(self) -> int:
         """
@@ -112,22 +111,30 @@ def heapsort(da: DynamicArray) -> None:
     """
     TODO: Write this implementation
     """
-    pass
+    for i in range((da.length()) // 2 - 1, -1, -1):
+        _percolate_down(da, i, da.length())
 
+    for i in range(da.length() - 1, -1, -1):
+        temp = da[i]
+        da[i] = da[0]
+        da[0] = temp
+
+        _percolate_down(da, 0, i)
 
 # It's highly recommended that you implement the following optional          #
 # helper function for percolating elements down the MinHeap. You can call    #
 # this from inside the MinHeap class. You may edit the function definition.  #
 
-def _percolate_down(da: DynamicArray, parent: int) -> None:
+
+def _percolate_down(da: DynamicArray, parent: int, stop) -> None:
     """
     TODO: Write your implementation
     """
     child_1_index = 2 * parent + 1
     child_2_index = 2 * parent + 2
 
-    while (child_1_index < da.length() and da[parent] > da[child_1_index]) or (child_2_index < da.length() and da[parent] > da[child_2_index]):
-        if child_2_index < da.length():
+    while (child_1_index < stop and da[parent] > da[child_1_index]) or (child_2_index < stop and da[parent] > da[child_2_index]):
+        if child_2_index < stop:
             if da[child_1_index] <= da[child_2_index] and da[parent] > da[child_1_index]:
                 temp = da[parent]
                 da[parent] = da[child_1_index]
