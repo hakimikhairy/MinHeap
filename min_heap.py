@@ -53,6 +53,7 @@ class MinHeap:
 
         current_index = self._heap.length() - 1
 
+        # Percolates node up the MinHeap according to MinHeap requirements.
         while current_index > 0 and self._heap[(current_index - 1) // 2] > self._heap[current_index]:
             temp = self._heap[current_index]
             self._heap[current_index] = self._heap[(current_index - 1) // 2]
@@ -95,7 +96,10 @@ class MinHeap:
         if self._heap.is_empty():
             raise MinHeapException
 
+        # Saves object with minimum priority value to be returned.
         temp_value = self._heap[0]
+
+        # Percolates new value down the MinHeap according to MinHeap structure requirements.
         self._heap[0] = self._heap[self._heap.length() - 1]
         self._heap.remove_at_index(self._heap.length() - 1)
         _percolate_down(self._heap, 0, self._heap.length())
@@ -113,7 +117,7 @@ class MinHeap:
         self._heap = DynamicArray()
         for i in range(da.length()):
             self._heap.append(da[i])
-
+        # Percolates interior nodes down the MinHeap according to MinHeap structure properties.
         for i in range((self._heap.length()) // 2 - 1, -1, -1):
             _percolate_down(self._heap, i, self._heap.length())
 
@@ -146,9 +150,11 @@ def heapsort(da: DynamicArray) -> None:
 
     Output: None
     """
+    # Creates a MinHeap from input DynamicArray
     for i in range((da.length()) // 2 - 1, -1, -1):
         _percolate_down(da, i, da.length())
 
+    # Sorts MinHeap into non-ascending order according to MinHeap algorithm.
     for i in range(da.length() - 1, -1, -1):
         temp = da[i]
         da[i] = da[0]
@@ -172,9 +178,12 @@ def _percolate_down(da: DynamicArray, parent: int, stop: int) -> None:
     child_1_index = 2 * parent + 1
     child_2_index = 2 * parent + 2
 
+    # Condition to check whether parent node needs to be switched positions with child node.
     while ((child_1_index < stop and da[parent] > da[child_1_index]) or
            (child_2_index < stop and da[parent] > da[child_2_index])):
+        # Condition to check if there are two child nodes to be compared.
         if child_2_index < stop:
+            # Condition to check if parent node needs to be switched with left child or right child.
             if da[child_1_index] <= da[child_2_index] and da[parent] > da[child_1_index]:
                 temp = da[parent]
                 da[parent] = da[child_1_index]
@@ -185,6 +194,7 @@ def _percolate_down(da: DynamicArray, parent: int, stop: int) -> None:
                 da[parent] = da[child_2_index]
                 da[child_2_index] = temp
                 parent = child_2_index
+        # Condition where there is only one child node.
         else:
             temp = da[parent]
             da[parent] = da[child_1_index]
