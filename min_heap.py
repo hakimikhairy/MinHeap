@@ -1,8 +1,5 @@
-# Name: Fariss Khairy
-# OSU Email: khairyf@oregonstate.edu
 # Course: CS261 - Data Structures
 # Assignment: 5
-# Due Date: 05/28/24
 # Description: This file contains a MinHeap implementation using a DynamicArray data structure. Various methods are
 # included to implement the MinHeap. A heapsort algorithm function is included to sort a DynamicArray data structure.
 

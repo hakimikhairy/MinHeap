@@ -1,8 +1,5 @@
-# Name: Fariss Khairy
-# OSU Email: khairyf@oregonstate.edu
 # Course: CS261 - Data Structures
 # Assignment: 2
-# Due Date: 04/29/24
 # Description: This file implements the DynamicArray data structure where the data structure's size is adjustable and
 # dynamic. It includes additional functions chunk and find_mode to complement DynamicArray. chunk sorts input
 # DynamicArray into individual DynamicArrays with values of non-descending order. find_mode returns the mode or modes
