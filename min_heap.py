@@ -1,11 +1,7 @@
-# Course: CS261 - Data Structures
-# Assignment: 5
 # Description: This file contains a MinHeap implementation using a DynamicArray data structure. Various methods are
 # included to implement the MinHeap. A heapsort algorithm function is included to sort a DynamicArray data structure.
 
-
 from dynamic_array import *
-
 
 class MinHeapException(Exception):
     """

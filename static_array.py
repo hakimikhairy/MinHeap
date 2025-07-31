@@ -1,9 +1,7 @@
-# Course:       CS261 - Data Structures
 # Description:  Data structure for assignments
 #               Be sure to go through this entire file to see what operations
 #               are available to the StaticArray. Also, see the __main__ block
 #               at the bottom for some tips on how to use the StaticArray.
-
 
 class StaticArrayException(Exception):
     """

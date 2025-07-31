@@ -1,10 +1,7 @@
-# Course: CS261 - Data Structures
-# Assignment: 2
 # Description: This file implements the DynamicArray data structure where the data structure's size is adjustable and
 # dynamic. It includes additional functions chunk and find_mode to complement DynamicArray. chunk sorts input
 # DynamicArray into individual DynamicArrays with values of non-descending order. find_mode returns the mode or modes
 # of input DynamicArray along with its frequency.
-
 
 from static_array import StaticArray
 
